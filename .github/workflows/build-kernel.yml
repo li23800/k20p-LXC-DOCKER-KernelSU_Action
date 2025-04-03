@@ -101,7 +101,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         mkdir llvm-clang && mkdir binutils 
-             wget -O clang12.tar.xz https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.2/LLVM-20.1.2-Linux-X64.tar.xz
+             wget -O clang12.tar.xz https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.7/clang+llvm-18.1.7-x86_64-linux-gnu-ubuntu-18.04.tar.xz
              tar -C llvm-clang/ -xf clang12.tar.xz
              wget -O binutils231.tar.xz https://ftp.gnu.org/gnu/binutils/binutils-2.44.tar.gz
              tar -C binutils/ -xf binutils231.tar.xz
@@ -250,7 +250,7 @@ jobs:
         export KBUILD_BUILD_HOST=Github-Action
         export KBUILD_BUILD_USER=$(echo ${{ github.actor }} | tr A-Z a-z)
       
-          make -j$(nproc --all) CC=clang O=out ARCH=${{ env.ARCH }} LD=ld.lld AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip
+          make -j$(nproc --all) CC=clang O=out ARCH=${{ env.ARCH }} CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- ${{ env.EXTRA_CMDS }}
           
         
 
