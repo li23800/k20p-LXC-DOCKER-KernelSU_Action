@@ -103,7 +103,7 @@ jobs:
         mkdir llvm-clang && mkdir binutils 
              wget -O clang12.tar.xz https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.0/LLVM-20.1.0-Linux-ARM64.tar.xz
              tar -C llvm-clang/ -xf clang12.tar.xz
-             wget -O binutils231.tar.xz https://github.com/tomxi1997/Electron-binutils-build-for-arm64-x86_64/releases/download/V6/electron-binutils-2.31.tar.xz
+             wget -O binutils231.tar.xz https://ftp.gnu.org/gnu/binutils/binutils-2.44.tar.gz
              tar -C binutils/ -xf binutils231.tar.xz
 
 
@@ -245,10 +245,8 @@ jobs:
     - name: Build kernel
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-        export PATH=$GITHUB_WORKSPACE/kernel_workspace/llvm-clang/bin:$PATH
-        export CC=clang
-        export CXX=clang++
-        export LDFLAGS="-fuse-ld=lld"
+        export PATH=$GITHUB_WORKSPACE/kernel_workspace/llvm-clang/bin:$GITHUB_WORKSPACE/kernel_workspace/binutils/bin:$PATH
+        
         export KBUILD_BUILD_HOST=Github-Action
         export KBUILD_BUILD_USER=$(echo ${{ github.actor }} | tr A-Z a-z)
         if [ ! -z ${{ env.KSU_EXPECTED_SIZE }} ] && [ ! -z ${{ env.KSU_EXPECTED_HASH }} ]; then
