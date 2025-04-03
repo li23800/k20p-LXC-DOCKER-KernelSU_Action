@@ -103,7 +103,7 @@ jobs:
         mkdir llvm-clang && mkdir binutils 
              wget -O clang12.tar.xz https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0/clang+llvm-12.0.0-x86_64-linux-gnu-ubuntu-20.04.tar.xz
              tar -C llvm-clang/ -xf clang12.tar.xz
-             wget -O binutils231.tar.xz https://github.com/tomxi1997/Electron-binutils-build-for-arm64-x86_64/releases/download/V6/electron-binutils-2.31.tar.xz
+             wget -O binutils231.tar.xz https://ftp.gnu.org/gnu/binutils/binutils-2.27.tar.gz
              tar -C binutils/ -xf binutils231.tar.xz
 
 
