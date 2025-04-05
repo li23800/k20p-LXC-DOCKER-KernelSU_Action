@@ -101,7 +101,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         mkdir llvm-clang && mkdir binutils 
-             wget -O clang12.tar.xz https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.7/clang+llvm-18.1.7-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+             wget -O clang12.tar.xz https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.0/LLVM-19.1.0-Linux-X64.tar.xz
              tar -C llvm-clang/ -xf clang12.tar.xz
              wget -O binutils231.tar.xz https://github.com/tomxi1997/Electron-binutils-build-for-arm64-x86_64/releases/download/V6/electron-binutils-2.37.tar.xz
              tar -C binutils/ -xf binutils231.tar.xz
